@@ -7,15 +7,31 @@ using UnityEngine;
 [ExecuteAlways]
 public class TrackGizmos : MonoBehaviour
 {
-    [SerializeField] private float track_width; // visual width of the UI in editor
     [SerializeField] private int track_length = 1; // minutes
     [SerializeField] private int track_bpm = 60; // beats per minute
-    [SerializeField] public float bpm_gap = 1.0f; // offset in world space for each beat in track
+
+    private static float bpm_gap = 0.5f; // offset in world space for each beat in track
+
     private int total_beats;
+
+    public int GetTotalBeats()
+    {
+        return total_beats;
+    }
+
+    private void SetTotalBeats()
+    {
+        total_beats = track_length * track_bpm;
+    }
 
     private void OnEnable()
     {
-        total_beats = track_length * track_bpm;
+        SetTotalBeats();
+    }
+
+    private void OnValidate()
+    {
+        SetTotalBeats();
     }
 
     private void OnDrawGizmos()
