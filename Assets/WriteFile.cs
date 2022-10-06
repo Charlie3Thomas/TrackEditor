@@ -22,7 +22,7 @@ public class WriteFile : MonoBehaviour
         data = new int[3, total_beats]; // Create an array of width 3 and length Total Beats
 
         // For each possible note for each beat, populate data array with empry spot
-        for (int _beat = 0; _beat < x; _beat++)
+        for (int _beat = 0; _beat < total_beats; _beat++)
         {
             // For each note per beat
             for (int _note = 0; _note < 3; _note++)
